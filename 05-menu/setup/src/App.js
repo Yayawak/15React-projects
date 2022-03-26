@@ -3,15 +3,21 @@ import Menu from './Menu';
 import Categories from './Categories';
 import items from './data';
 
+// Set will automaticall eliminate same value
+const allCategories = ['all', ...new Set(items.map((item) => item.category))] 
+
 function App() {
   const [menuItems, setMenuItems] = useState(items);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(allCategories);
 
-  const menuElements = menuItems.map((menu) => {
-    return (
-      <Menu {...menu} key={menu.id} />
-    )
-  })
+  const filterItems = (categorie) => {
+    if(categorie=== 'all'){
+      setMenuItems(items);
+      return;
+    }
+    const newItems = items.filter((item) => item.category === categorie);
+    setMenuItems(newItems);
+  }
   return (
     <main>
       <section className='menu section'>
@@ -19,12 +25,10 @@ function App() {
           <h2>Our Menu</h2>
           <div className='underline' />
         </div>
-      <Categories />
+      <Categories categories={categories} filterItems={filterItems} />
+      <Menu items={menuItems}/>
+      </section>
       
-      </section>
-      <section  className='section-center'>
-        {menuElements}
-      </section>
     </main>
   )
 }
