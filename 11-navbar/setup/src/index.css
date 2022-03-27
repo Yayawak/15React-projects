@@ -183,12 +183,15 @@ nav {
 }
 .links-container {
   height: 0;
+  /* height: 200px; */
   overflow: hidden;
   transition: var(--transition);
 }
 .show-container {
   height: 10rem;
 }
+
+/* when the device is small enough */
 @media screen and (min-width: 800px) {
   .nav-center {
     max-width: 1170px;
