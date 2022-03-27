@@ -5,14 +5,17 @@ import logo from './logo.svg'
 
 const Navbar = () => {
   const [showLinks,setShowLinks] = useState(false);
+  // useRef will not auto refresh Component like useState.
   const linksContainerRef = useRef(null); // for div
   const linksRef = useRef(null); //before the list
-
+  
   // Dynamic Height of List tab
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
     console.log(linksHeight)
     if(showLinks) {
+      // useRef use to store data, It can be used to access a DOM element directly.
+      // the same as <div style={{height: num}}><div/>
       linksContainerRef.current.style.height = `${linksHeight}px`
     }else{
       linksContainerRef.current.style.height = '0px'
