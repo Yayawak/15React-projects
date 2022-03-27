@@ -8,6 +8,16 @@ function App() {
   // current index
   const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    const lastIndex = people.length-1 ;
+    if(index < 0) setIndex(lastIndex) // loop to the terminal index
+    else if (index > lastIndex) setIndex(0); 
+  }, [index, people]);
+
+  useEffect(() => {
+    let slider = setInterval(() => {setIndex(index+1)}, 3000);
+    return () => clearInterval(slider)
+  }, [index])
   return (
     <section className='section'>
       <div className='title'>
