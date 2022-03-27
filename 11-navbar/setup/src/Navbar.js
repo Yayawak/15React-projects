@@ -8,9 +8,15 @@ const Navbar = () => {
   const linksContainerRef = useRef(null); // for div
   const linksRef = useRef(null); //before the list
 
+  // Dynamic Height of List tab
   useEffect(() => {
-    const linksHeight = linksRef.current.getBoundingClientRect();
+    const linksHeight = linksRef.current.getBoundingClientRect().height;
     console.log(linksHeight)
+    if(showLinks) {
+      linksContainerRef.current.style.height = `${linksHeight}px`
+    }else{
+      linksContainerRef.current.style.height = '0px'
+    }
   }, [showLinks])
 
   return (

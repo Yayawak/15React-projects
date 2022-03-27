@@ -208,6 +208,7 @@ nav {
     display: none;
   }
   .links-container {
+    /* prevent from collapsing to 0 height */
     height: auto !important;
   }
   .links {
