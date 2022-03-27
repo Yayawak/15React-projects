@@ -5,6 +5,7 @@ import data from './data';
 import people from './data';
 function App() {
   const [people, setPeople] = useState(data);
+  // current index
   const [index, setIndex] = useState(0);
 
   return (
@@ -18,10 +19,15 @@ function App() {
       <div className='section-center'>
         {people.map((person,ind) => {
           const {id,image,name,title,quote} = person;
-          // more stuff are coming up
-
+          // LOGIC
+          let position = 'nextSlide'
+          if(index === ind) position = 'activeSlide';
+          else if (ind === index-1 || 
+                  (index === 0 && ind === people.length-1)) {
+            position = 'lastSlide';
+          }
           return (
-            <article key={id}>
+            <article key={id} className={position}>
               <img src={image} alt={name} className='person-img'/>
               <h4>{name}</h4>
               <p className='title'>{title}</p>
@@ -31,10 +37,10 @@ function App() {
           )
         })}
 
-        <button className='prev'>
+        <button className='prev' onClick={() => setIndex(index-1)}>
           <FiChevronLeft />
         </button>
-        <button className='next'>
+        <button className='next' onClick={() => setIndex(index+1)}>
           <FiChevronRight />
         </button>
       </div>
