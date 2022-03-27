@@ -31,7 +31,7 @@ Variables
   --clr-grey-9: hsl(212, 33%, 89%);
   --clr-grey-10: hsl(210, 36%, 96%);
   --clr-white: #fff;
-  --clr-red-dark: hsl(360, 67%, 44%);
+  ---clr-red-dark: hsl(360, 67%, 44%);
   --clr-red-light: hsl(360, 71%, 66%);
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
@@ -146,6 +146,7 @@ Color Generator
   align-items: center;
   height: 100px;
   padding-left: 2rem;
+  /* margin: 2px; */
 }
 .container h3 {
   margin-bottom: 0;
@@ -180,7 +181,7 @@ input {
   }
 }
 input.error {
-  border: 2px solid var(--clr-red-dark);
+  border: 2px solid var(---clr-red-dark);
 }
 .colors {
   min-height: calc(100vh - 100px);
