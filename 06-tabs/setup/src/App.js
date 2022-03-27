@@ -37,7 +37,24 @@ function App() {
       </div>
 
       <div className='jobs-center'>
-        {/* btn-container */}
+        {/* btn-container or tabs*/}
+        <div className='btn-container'>
+          {
+            jobs.map((job,ind) => {
+              return(
+                <button key={job.id} 
+                  className={`job-btn ${ind === index
+                    && 'active-btn'}`}
+                  onClick={() => {
+                    // not using job.id cuz it's maybe long, bizzare id like a89M3442
+                    setIndex(ind);
+                  }}>
+                  {job.company}
+                </button>
+              )
+            })
+          }
+        </div>
         {/* job info */}
         <article className='job-info'>
           <h3>{title}</h3>
