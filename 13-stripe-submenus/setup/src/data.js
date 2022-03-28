@@ -5,7 +5,7 @@ const sublinks = [
     page: 'products',
     links: [
       { label: 'payment', icon: <FaCreditCard />, url: '/products' },
-      { label: 'terminal', icon: <FaCreditCard />, url: '/products' },
+      { label: 'terminal', icon: <FaCreditCard />, url: '/' },
       { label: 'connect', icon: <FaCreditCard />, url: '/products' },
     ],
   },
