@@ -6,14 +6,20 @@ const Navbar = () => {
   const {openSidebar,closeSubmenu,openSubmenu} = useGlobalContext();
   // display on mouse hover
   const displaySubmenu = e => {
-    const page = e.target.textContent;
+    const pageName = e.target.textContent;
     const tempBtn = e.target.getBoundingClientRect();
     const center = (tempBtn.left + tempBtn.right )/2; //centerX
     const bottom = tempBtn.bottom - 3; // lift submenu 3px
-    openSubmenu(page,{center,bottom}); //2nd param is coord
+    openSubmenu(pageName,{center,bottom}); //2nd param is coord
+  }
+  const handleSubmenu = e => {
+    // if this element not contains "link-btn" class, then close submenu.
+    if (!e.target.classList.contains('link-btn')){
+      closeSubmenu();
+    }
   }
   return (
-    <nav className='nav'>
+    <nav className='nav' onMouseOver={handleSubmenu}>
       <div className='nav-center'>
         {/* icon stripe */}
         <div className='nav-header'>

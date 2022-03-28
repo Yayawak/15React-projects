@@ -7,12 +7,18 @@ export const AppProvider = ({children}) => {
     const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
     // submenu's location
     const [location, setLocation] = useState({});
+    const [page,setPage] = useState({
+        page: '', links: []
+    });
 
     const openSidebar = () => setIsSidebarOpen(true);
-    const closeSidebar = () => setIsSidebarOpen(false);
-    const openSubmenu = (text,coord) => {
+    const closeSidebar = () => {setIsSidebarOpen(false);}
+    const openSubmenu = (pageName,coord) => {
+        const _page = sublinks.find((link) => link.page === pageName);
+        setPage(_page);
         setIsSubmenuOpen(true);
-        setLocation(coord)
+        setLocation(coord);
+
     }
     const closeSubmenu = () => setIsSubmenuOpen(false);
 
@@ -23,7 +29,7 @@ export const AppProvider = ({children}) => {
             isSubmenuOpen, isSidebarOpen,
             openSidebar, openSubmenu,
             closeSidebar, closeSubmenu,
-            location
+            location, page
         }}>
             {children}
         </AppContext.Provider>
