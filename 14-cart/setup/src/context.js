@@ -24,6 +24,9 @@ const AppProvider = ({ children }) => {
   const decrease = id => {
     dispatch({type:'DECREASE', payload:id})
   }
+  const toggleAmount = (id,type) => {
+    dispatch({type:'TOGGLE_AMOUNT', payload:{id,type}})
+  }
 
   const fetchData = async () => {
     dispatch({type: 'LOADING'});
@@ -45,7 +48,8 @@ const AppProvider = ({ children }) => {
         clearCart,
         remove,
         increase,
-        decrease
+        decrease,
+        toggleAmount
       }}
     >
       {children}
